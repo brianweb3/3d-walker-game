@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "3D walking game with coin collection and token burning mechanics",
   "scripts": {
-    "build": "echo 'No build step required'",
-    "start": "echo 'Static files in dist folder'"
+    "start": "npx serve -s dist -l $PORT"
   },
   "keywords": [
     "3d",
@@ -13,5 +12,8 @@
     "react-three-fiber"
   ],
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }

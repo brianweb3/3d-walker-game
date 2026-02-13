@@ -37,17 +37,6 @@
 
   // Initialize game
   function initGame() {
-    // Add test burn transaction
-    if (gameState.burnedTransactions.length === 0) {
-      const testTx = {
-        tx: '5KJpW9xQmN3vR8tL2hF6dC4bA7eG1jY9zX5wM8nP3sT6uV2c',
-        amount: 33000,
-        timestamp: Date.now() - 3600000 // 1 hour ago
-      };
-      gameState.burnedTransactions.push(testTx);
-      gameState.totalBurned = 33000;
-    }
-    
     updateUI();
     updateBurnedTransactions();
     initMinimap();

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "3D walking game with coin collection and token burning mechanics",
   "scripts": {
-    "start": "npx serve -s dist -l $PORT"
+    "start": "serve -s dist -l ${PORT:-3000}"
   },
   "keywords": [
     "3d",
@@ -15,5 +15,8 @@
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
   }
 }

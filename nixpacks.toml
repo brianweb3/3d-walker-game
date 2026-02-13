@@ -8,4 +8,4 @@ cmds = ["npm install -g serve"]
 cmds = ["echo 'Static site - no build needed'"]
 
 [start]
-cmd = "serve -s dist -l $PORT"
+cmd = "serve -s dist -l ${PORT:-3000}"

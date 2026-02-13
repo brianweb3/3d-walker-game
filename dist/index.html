@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>The Walker - X PUMPFUN</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui,shrink-to-fit=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="A man walking on snow. Enjoying the silence and the relaxing sound of his own foosteps.">
+<link rel="icon" type="image/png" href="./favicon.png">
+<link rel="apple-touch-icon" href="./favicon.png">
+<link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <div id="root"></div>
+  
+  <!-- Title Panel Modal -->
+  <div class="retro-modal" id="title-modal">
+    <div class="retro-modal-header">
+      <div class="retro-header-left">
+        <div class="retro-icon walker-icon">
+          <img src="./walker-logo.png" alt="The Walker" class="walker-logo-img">
+        </div>
+        <span class="retro-title">THE WALKER</span>
+      </div>
+      <div class="retro-header-right">
+        <span class="retro-arrow">>>></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Twitter Panel Modal -->
+  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="retro-modal-link">
+    <div class="retro-modal" id="twitter-modal">
+      <div class="retro-modal-header">
+        <div class="retro-header-left">
+          <img src="./twitter-logo.svg" alt="Twitter/X" class="retro-header-icon">
+          <span class="retro-title">TWITTER</span>
+        </div>
+        <div class="retro-header-right">
+          <span class="retro-arrow">>>></span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- PumpFun Panel Modal -->
+  <a href="https://pump.fun" target="_blank" rel="noopener noreferrer" class="retro-modal-link">
+    <div class="retro-modal" id="pumpfun-modal">
+      <div class="retro-modal-header">
+        <div class="retro-header-left">
+          <img src="./pumpfun-logo.png" alt="PumpFun" class="retro-header-icon">
+          <span class="retro-title">PUMPFUN</span>
+        </div>
+        <div class="retro-header-right">
+          <span class="retro-arrow">>>></span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- DexScreener Panel Modal -->
+  <a href="https://dexscreener.com" target="_blank" rel="noopener noreferrer" class="retro-modal-link">
+    <div class="retro-modal" id="dexscreener-modal">
+      <div class="retro-modal-header">
+        <div class="retro-header-left">
+          <img src="./dex-screener-logo.svg" alt="DexScreener" class="retro-header-icon">
+          <span class="retro-title">DEXSCREENER</span>
+        </div>
+        <div class="retro-header-right">
+          <span class="retro-arrow">>>></span>
+        </div>
+      </div>
+    </div>
+  </a>
+
+  <!-- Burned Tokens Panel Modal -->
+  <div class="retro-modal" id="burned-tokens-modal">
+    <div class="retro-modal-header">
+      <div class="retro-header-left">
+        <div class="retro-icon"></div>
+        <span class="retro-title">BURNED TOKENS</span>
+      </div>
+      <div class="retro-header-right">
+        <span class="retro-arrow">>>></span>
+      </div>
+    </div>
+    <div class="retro-modal-content">
+      <div class="burned-tokens-display">
+        <div class="total-burned-display">
+          <span class="total-burned-label">Total burned:</span>
+          <span class="total-burned-value" id="total-burned">0</span>
+        </div>
+        <div class="burned-transactions-list" id="burned-transactions"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coins Panel Modal -->
+  <div class="retro-modal" id="coins-modal">
+    <div class="retro-modal-header">
+      <div class="retro-header-left">
+        <div class="retro-icon"></div>
+        <span class="retro-title">COINS</span>
+      </div>
+      <div class="retro-header-right">
+        <span class="retro-arrow">>>></span>
+      </div>
+    </div>
+    <div class="retro-modal-content">
+      <div class="coins-simple-display">
+        <div class="coins-collected-display">
+          <span class="coins-collected-label">Collected coins:</span>
+          <span class="coins-collected-value" id="coins-collected">0</span>
+        </div>
+        <div class="coins-info">
+          <span class="coins-info-text">Each coin found burns 33,000 $WALKER tokens</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map Modal -->
+  <div class="retro-modal" id="map-modal">
+    <div class="retro-modal-header">
+      <div class="retro-header-left">
+        <div class="retro-icon"></div>
+        <span class="retro-title">MAP</span>
+      </div>
+      <div class="retro-header-right">
+        <span class="retro-arrow">>>></span>
+      </div>
+    </div>
+    <div class="retro-modal-content">
+      <div class="retro-content-image">
+        <div class="minimap-wrapper" id="minimap">
+          <canvas id="minimap-canvas" width="200" height="200"></canvas>
+          <div class="minimap-player" id="minimap-player"></div>
+          <div class="minimap-coins" id="minimap-coins"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src='./explorer_local.js'></script>
+  <script src='./auto-patch.js'></script>
+  <script src='./green-pants-patch.js'></script>
+  <script src='./scene-integration.js'></script>
+  <script src='./r3f-patch.js'></script>
+  <script src='./game-mechanics.js'></script>
+  <script src='./manual-coin-setup.js'></script>
+  </body>
+  
+</html>

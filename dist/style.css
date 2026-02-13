@@ -229,14 +229,14 @@ h6 {
   max-width: 280px;
 }
 
-/* Burned Tokens Modal - над панелью coins с зазором 16px */
+/* Burned Tokens Modal - над панелью coins, адаптивная высота */
 #burned-tokens-modal {
   bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 240px + 40px + 16px + 120px + 16px + 100px);
   left: max(16px, env(safe-area-inset-left, 16px));
   width: 280px;
   min-width: 280px;
   max-width: 280px;
-  max-height: 300px;
+  max-height: min(300px, 35vh);
   display: flex;
   flex-direction: column;
 }
@@ -392,8 +392,9 @@ h6 {
 }
 
 #burned-tokens-modal .retro-modal-content {
-  max-height: calc(300px - 40px); /* Высота панели минус header */
+  max-height: calc(min(300px, 35vh) - 40px);
   overflow: hidden;
+  min-height: 0;
 }
 
 /* Title modal без content */
@@ -446,7 +447,7 @@ h6 {
 }
 
 .burned-transactions-list {
-  max-height: 200px;
+  max-height: min(200px, 25vh);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -867,7 +868,15 @@ h6 {
     width: 240px;
     min-width: 240px;
     max-width: 240px;
-    max-height: 250px;
+    max-height: min(220px, 28vh);
+  }
+
+  #burned-tokens-modal .retro-modal-content {
+    max-height: calc(min(220px, 28vh) - 40px);
+  }
+
+  .burned-transactions-list {
+    max-height: min(140px, 18vh);
   }
   
   #coordinates-modal {
@@ -1062,7 +1071,15 @@ h6 {
     width: 200px;
     min-width: 200px;
     max-width: 200px;
-    max-height: 250px;
+    max-height: min(160px, 22vh);
+  }
+
+  #burned-tokens-modal .retro-modal-content {
+    max-height: calc(min(160px, 22vh) - 40px);
+  }
+
+  .burned-transactions-list {
+    max-height: min(80px, 12vh);
   }
   
   #coordinates-modal {

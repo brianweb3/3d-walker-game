@@ -1,0 +1,8 @@
+node_modules
+.git
+src
+INTEGRATION.md
+README.md
+LICENSE.txt
+*.md
+!.vercelignore

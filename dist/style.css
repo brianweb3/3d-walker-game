@@ -229,16 +229,21 @@ h6 {
   max-width: 280px;
 }
 
-/* Buyback Modal */
+/* Buyback Modal - fixed gap below top panel; height = space between top and coins (shrinks 1px per 1px viewport) */
 #buyback-modal {
-  bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 240px + 40px + 16px + 120px + 16px + 100px);
+  --buyback-gap-top: calc(max(16px, env(safe-area-inset-top, 16px)) + 72px);
+  --buyback-from-bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 240px + 40px + 16px + 160px + 300px);
+  top: var(--buyback-gap-top);
+  bottom: var(--buyback-from-bottom);
   left: max(16px, env(safe-area-inset-left, 16px));
   width: 280px;
   min-width: 280px;
   max-width: 280px;
-  max-height: min(300px, 35vh);
+  min-height: 64px;
+  height: auto;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 /* Coordinates Modal - правый верхний угол */
@@ -392,9 +397,9 @@ h6 {
 }
 
 #buyback-modal .retro-modal-content {
-  max-height: calc(min(300px, 35vh) - 40px);
-  overflow: hidden;
+  overflow: auto;
   min-height: 0;
+  flex: 1 1 0;
 }
 
 /* Title modal без content */
@@ -409,7 +414,7 @@ h6 {
   overflow: hidden;
 }
 
-/* Buyback Display */
+/* Buyback Display - shrinks so panel never overlaps header */
 .buyback-display {
   display: flex;
   flex-direction: column;
@@ -418,6 +423,7 @@ h6 {
   height: 100%;
   min-height: 0;
   overflow: hidden;
+  flex: 1 1 0;
 }
 
 .total-buyback-display {
@@ -447,12 +453,11 @@ h6 {
 }
 
 .buyback-transactions-list {
-  max-height: min(200px, 25vh);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 0;
-  flex: 1;
+  flex: 1 1 0;
   min-height: 0;
 }
 
@@ -863,20 +868,19 @@ h6 {
   }
 
   #buyback-modal {
-    bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 200px + 36px + 16px + 120px + 16px + 80px);
+    --buyback-gap-top: calc(max(16px, env(safe-area-inset-top, 16px)) + 72px);
+    --buyback-from-bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 200px + 36px + 16px + 160px + 300px);
+    top: var(--buyback-gap-top);
+    bottom: var(--buyback-from-bottom);
     left: max(16px, env(safe-area-inset-left, 16px));
     width: 240px;
     min-width: 240px;
     max-width: 240px;
-    max-height: min(220px, 28vh);
-  }
-
-  #buyback-modal .retro-modal-content {
-    max-height: calc(min(220px, 28vh) - 40px);
+    min-height: 56px;
   }
 
   .buyback-transactions-list {
-    max-height: min(140px, 18vh);
+    max-height: none;
   }
   
   #coordinates-modal {
@@ -1066,20 +1070,19 @@ h6 {
   }
 
   #buyback-modal {
-    bottom: calc(max(12px, env(safe-area-inset-bottom, 12px)) + 180px + 32px + 12px + 120px + 12px + 60px);
+    --buyback-gap-top: calc(max(12px, env(safe-area-inset-top, 12px)) + 72px);
+    --buyback-from-bottom: calc(max(12px, env(safe-area-inset-bottom, 12px)) + 180px + 32px + 12px + 160px + 300px);
+    top: var(--buyback-gap-top);
+    bottom: var(--buyback-from-bottom);
     left: max(12px, env(safe-area-inset-left, 12px));
     width: 200px;
     min-width: 200px;
     max-width: 200px;
-    max-height: min(160px, 22vh);
-  }
-
-  #buyback-modal .retro-modal-content {
-    max-height: calc(min(160px, 22vh) - 40px);
+    min-height: 48px;
   }
 
   .buyback-transactions-list {
-    max-height: min(80px, 12vh);
+    max-height: none;
   }
   
   #coordinates-modal {

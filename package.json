@@ -1,7 +1,7 @@
 {
   "name": "3d-walker-game",
   "version": "1.0.0",
-  "description": "3D walking game with coin collection and token burning mechanics",
+  "description": "3D walking game with coin collection and buyback mechanics (each coin = +1 buyback from team for 1 SOL)",
   "scripts": {
     "start": "serve -s dist -l ${PORT:-3000}"
   },

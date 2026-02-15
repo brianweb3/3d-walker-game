@@ -7,19 +7,19 @@
   // Game state
   const gameState = {
     coinsCollected: 0,
-    totalBurned: 0, // Total tokens burned
-    TOKENS_PER_COIN: 33000, // Tokens burned per coin
+    totalBuyback: 0, // Total buybacks (1 buyback = 1 SOL from team)
+    BUYBACK_PER_COIN: 1, // 1 coin = +1 buyback for 1 SOL
     coins: [],
-    burnedTransactions: [], // Array of {tx: string, amount: number, timestamp: number}
-    PICKUP_DISTANCE: 8, // Distance to pick up coins (увеличено для удобства)
-    COIN_COUNT: 30, // Number of coins to spawn
-    coinsAddedToScene: false // Track if coins were added to scene
+    buybackTransactions: [], // Array of {tx: string, amount: number, timestamp: number}
+    PICKUP_DISTANCE: 8,
+    COIN_COUNT: 30,
+    coinsAddedToScene: false
   };
 
   // DOM elements
   const coinsCollectedEl = document.getElementById('coins-collected');
-  const totalBurnedEl = document.getElementById('total-burned');
-  const burnedTransactionsEl = document.getElementById('burned-transactions');
+  const totalBuybackEl = document.getElementById('total-buyback');
+  const buybackTransactionsEl = document.getElementById('buyback-transactions');
   const minimapPlayerEl = document.getElementById('minimap-player');
   const minimapCoinsEl = document.getElementById('minimap-coins');
   const minimapCanvas = document.getElementById('minimap-canvas');
@@ -38,7 +38,7 @@
   // Initialize game
   function initGame() {
     updateUI();
-    updateBurnedTransactions();
+    updateBuybackTransactions();
     initMinimap();
     
     // Try to intercept THREE.js and Scene creation early
@@ -876,9 +876,9 @@
     if (coinsCollectedEl) {
       coinsCollectedEl.textContent = gameState.coinsCollected.toLocaleString();
     }
-    // Обновляем общее количество сожженных токенов
-    if (totalBurnedEl) {
-      totalBurnedEl.textContent = formatTokenAmount(gameState.totalBurned);
+    // Update total buyback count
+    if (totalBuybackEl) {
+      totalBuybackEl.textContent = gameState.totalBuyback.toLocaleString();
     }
   }
 
@@ -902,52 +902,49 @@
     return hash;
   }
 
-  // Add burned transaction
-  function addBurnedTransaction(amount) {
+  // Add buyback transaction (1 coin = +1 buyback for 1 SOL)
+  function addBuybackTransaction(amount) {
     const txHash = generateTransactionHash();
     const transaction = {
       tx: txHash,
       amount: amount,
       timestamp: Date.now()
     };
-    gameState.burnedTransactions.unshift(transaction); // Add to beginning
-    gameState.totalBurned += amount;
+    gameState.buybackTransactions.unshift(transaction);
+    gameState.totalBuyback += amount;
     
-    // Keep only last 50 transactions
-    if (gameState.burnedTransactions.length > 50) {
-      gameState.burnedTransactions = gameState.burnedTransactions.slice(0, 50);
+    if (gameState.buybackTransactions.length > 50) {
+      gameState.buybackTransactions = gameState.buybackTransactions.slice(0, 50);
     }
     
-    updateBurnedTransactions();
+    updateBuybackTransactions();
     updateUI();
-    showBurnNotification(amount);
+    showBuybackNotification(amount);
   }
 
-  // Update burned transactions display
-  function updateBurnedTransactions() {
-    if (!burnedTransactionsEl) return;
+  // Update buyback transactions display
+  function updateBuybackTransactions() {
+    if (!buybackTransactionsEl) return;
     
-    // Clear existing transactions
-    burnedTransactionsEl.innerHTML = '';
+    buybackTransactionsEl.innerHTML = '';
     
-    if (gameState.burnedTransactions.length === 0) {
+    if (gameState.buybackTransactions.length === 0) {
       const emptyMsg = document.createElement('div');
-      emptyMsg.className = 'burned-transaction-empty';
-      emptyMsg.textContent = 'No tokens burned yet';
+      emptyMsg.className = 'buyback-transaction-empty';
+      emptyMsg.textContent = 'No buybacks yet';
       emptyMsg.style.cssText = `
         padding: 20px;
         text-align: center;
         color: #666;
         font-size: 12px;
       `;
-      burnedTransactionsEl.appendChild(emptyMsg);
+      buybackTransactionsEl.appendChild(emptyMsg);
       return;
     }
     
-    // Display transactions
-    gameState.burnedTransactions.forEach((tx) => {
+    gameState.buybackTransactions.forEach((tx) => {
       const txEl = document.createElement('div');
-      txEl.className = 'burned-transaction-item';
+      txEl.className = 'buyback-transaction-item';
       
       const txLink = document.createElement('a');
       txLink.href = `https://solscan.io/tx/${tx.tx}`;
@@ -963,10 +960,10 @@
       `;
       
       const amountEl = document.createElement('span');
-      amountEl.className = 'burned-transaction-amount';
-      amountEl.textContent = `-${formatTokenAmount(tx.amount)} $WALKER`;
+      amountEl.className = 'buyback-transaction-amount';
+      amountEl.textContent = `+${tx.amount} buyback (1 SOL)`;
       amountEl.style.cssText = `
-        color: #cc0000;
+        color: #0a0;
         font-weight: 700;
         margin-left: 12px;
         font-size: 11px;
@@ -982,30 +979,30 @@
         border-bottom: 1px solid rgba(0,0,0,0.1);
       `;
       
-      burnedTransactionsEl.appendChild(txEl);
+      buybackTransactionsEl.appendChild(txEl);
     });
   }
 
-  // Show burn notification
-  function showBurnNotification(amount) {
+  // Show buyback notification
+  function showBuybackNotification(amount) {
     const notification = document.createElement('div');
-    notification.className = 'burn-notification';
-    notification.textContent = `🔥 ${formatTokenAmount(amount)} $WALKER burned`;
+    notification.className = 'buyback-notification';
+    notification.textContent = `+${amount} buyback from team (1 SOL)`;
     notification.style.cssText = `
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: rgba(204, 0, 0, 0.95);
+      background: rgba(0, 140, 0, 0.95);
       color: white;
       padding: 16px 24px;
       border-radius: 12px;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Courier New', monospace;
       font-weight: 700;
-      font-size: 24px;
+      font-size: 20px;
       z-index: 10000;
       pointer-events: none;
-      animation: burnNotificationAnimation 2s ease-out forwards;
+      animation: buybackNotificationAnimation 2s ease-out forwards;
     `;
     
     document.body.appendChild(notification);
@@ -1015,12 +1012,12 @@
     }, 2000);
   }
 
-  // Add animation for burn notification
-  if (!document.getElementById('burn-notification-styles')) {
+  // Add animation for buyback notification
+  if (!document.getElementById('buyback-notification-styles')) {
     const style = document.createElement('style');
-    style.id = 'burn-notification-styles';
+    style.id = 'buyback-notification-styles';
     style.textContent = `
-      @keyframes burnNotificationAnimation {
+      @keyframes buybackNotificationAnimation {
         0% {
           opacity: 0;
           transform: translate(-50%, -50%) scale(0.8);
@@ -1841,9 +1838,9 @@
     coin.collected = true;
     gameState.coinsCollected++;
 
-    // Burn tokens when coin is collected
-    const tokensToBurn = gameState.TOKENS_PER_COIN;
-    addBurnedTransaction(tokensToBurn);
+    // Each coin = +1 buyback from team for 1 SOL
+    const buybackAmount = gameState.BUYBACK_PER_COIN;
+    addBuybackTransaction(buybackAmount);
 
     // Remove coin from scene
     if (coin.mesh) {

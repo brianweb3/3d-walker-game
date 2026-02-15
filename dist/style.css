@@ -229,8 +229,8 @@ h6 {
   max-width: 280px;
 }
 
-/* Burned Tokens Modal - над панелью coins, адаптивная высота */
-#burned-tokens-modal {
+/* Buyback Modal */
+#buyback-modal {
   bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 240px + 40px + 16px + 120px + 16px + 100px);
   left: max(16px, env(safe-area-inset-left, 16px));
   width: 280px;
@@ -391,7 +391,7 @@ h6 {
   min-height: 0;
 }
 
-#burned-tokens-modal .retro-modal-content {
+#buyback-modal .retro-modal-content {
   max-height: calc(min(300px, 35vh) - 40px);
   overflow: hidden;
   min-height: 0;
@@ -409,8 +409,8 @@ h6 {
   overflow: hidden;
 }
 
-/* Burned Tokens Display */
-.burned-tokens-display {
+/* Buyback Display */
+.buyback-display {
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -420,7 +420,7 @@ h6 {
   overflow: hidden;
 }
 
-.total-burned-display {
+.total-buyback-display {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -430,7 +430,7 @@ h6 {
   border-radius: 4px;
 }
 
-.total-burned-label {
+.total-buyback-label {
   font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
   font-weight: 700;
   font-size: 12px;
@@ -439,14 +439,14 @@ h6 {
   letter-spacing: 1px;
 }
 
-.total-burned-value {
+.total-buyback-value {
   font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
   font-weight: 700;
   font-size: 18px;
   color: #cc0000;
 }
 
-.burned-transactions-list {
+.buyback-transactions-list {
   max-height: min(200px, 25vh);
   overflow-y: auto;
   display: flex;
@@ -456,7 +456,7 @@ h6 {
   min-height: 0;
 }
 
-.burned-transaction-item {
+.buyback-transaction-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -465,11 +465,11 @@ h6 {
   font-size: 11px;
 }
 
-.burned-transaction-item:last-child {
+.buyback-transaction-item:last-child {
   border-bottom: none;
 }
 
-.burned-transaction-item a {
+.buyback-transaction-item a {
   color: #0066cc;
   text-decoration: none;
   font-family: 'Courier New', monospace;
@@ -477,18 +477,18 @@ h6 {
   flex: 1;
 }
 
-.burned-transaction-item a:hover {
+.buyback-transaction-item a:hover {
   text-decoration: underline;
 }
 
-.burned-transaction-amount {
+.buyback-transaction-amount {
   color: #cc0000;
   font-weight: 700;
   margin-left: 12px;
   white-space: nowrap;
 }
 
-.burned-transaction-empty {
+.buyback-transaction-empty {
   padding: 40px 20px;
   text-align: center;
   color: #999;
@@ -862,7 +862,7 @@ h6 {
     max-width: 240px;
   }
 
-  #burned-tokens-modal {
+  #buyback-modal {
     bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 200px + 36px + 16px + 120px + 16px + 80px);
     left: max(16px, env(safe-area-inset-left, 16px));
     width: 240px;
@@ -871,11 +871,11 @@ h6 {
     max-height: min(220px, 28vh);
   }
 
-  #burned-tokens-modal .retro-modal-content {
+  #buyback-modal .retro-modal-content {
     max-height: calc(min(220px, 28vh) - 40px);
   }
 
-  .burned-transactions-list {
+  .buyback-transactions-list {
     max-height: min(140px, 18vh);
   }
   
@@ -1065,7 +1065,7 @@ h6 {
     max-width: 200px;
   }
 
-  #burned-tokens-modal {
+  #buyback-modal {
     bottom: calc(max(12px, env(safe-area-inset-bottom, 12px)) + 180px + 32px + 12px + 120px + 12px + 60px);
     left: max(12px, env(safe-area-inset-left, 12px));
     width: 200px;
@@ -1074,11 +1074,11 @@ h6 {
     max-height: min(160px, 22vh);
   }
 
-  #burned-tokens-modal .retro-modal-content {
+  #buyback-modal .retro-modal-content {
     max-height: calc(min(160px, 22vh) - 40px);
   }
 
-  .burned-transactions-list {
+  .buyback-transactions-list {
     max-height: min(80px, 12vh);
   }
   

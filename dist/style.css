@@ -232,7 +232,7 @@ h6 {
 /* Buyback Modal - fixed gap below top panel; height = space between top and coins (shrinks 1px per 1px viewport) */
 #buyback-modal {
   --buyback-gap-top: calc(max(16px, env(safe-area-inset-top, 16px)) + 72px);
-  --buyback-from-bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 240px + 40px + 16px + 160px + 300px);
+  --buyback-from-bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 240px + 40px + 16px + 160px + 75px);
   top: var(--buyback-gap-top);
   bottom: var(--buyback-from-bottom);
   left: max(16px, env(safe-area-inset-left, 16px));
@@ -869,7 +869,7 @@ h6 {
 
   #buyback-modal {
     --buyback-gap-top: calc(max(16px, env(safe-area-inset-top, 16px)) + 72px);
-    --buyback-from-bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 200px + 36px + 16px + 160px + 300px);
+    --buyback-from-bottom: calc(max(16px, env(safe-area-inset-bottom, 16px)) + 200px + 36px + 16px + 160px + 75px);
     top: var(--buyback-gap-top);
     bottom: var(--buyback-from-bottom);
     left: max(16px, env(safe-area-inset-left, 16px));
@@ -1071,7 +1071,7 @@ h6 {
 
   #buyback-modal {
     --buyback-gap-top: calc(max(12px, env(safe-area-inset-top, 12px)) + 72px);
-    --buyback-from-bottom: calc(max(12px, env(safe-area-inset-bottom, 12px)) + 180px + 32px + 12px + 160px + 300px);
+    --buyback-from-bottom: calc(max(12px, env(safe-area-inset-bottom, 12px)) + 180px + 32px + 12px + 160px + 75px);
     top: var(--buyback-gap-top);
     bottom: var(--buyback-from-bottom);
     left: max(12px, env(safe-area-inset-left, 12px));
